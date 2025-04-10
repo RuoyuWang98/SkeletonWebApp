@@ -40,4 +40,9 @@ public class QueryProcessorTest {
     assertThat(queryProcessor.process("Which of the following numbers is the largest: 28, 51, 62?"), containsString("62"));
   }
 
+  @Test
+  public void knowsAboutPlus() {
+    assertThat(queryProcessor.process("What is 61 plus 13?"), containsString("74"));
+  }
+
 }

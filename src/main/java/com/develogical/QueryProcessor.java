@@ -36,6 +36,17 @@ public class QueryProcessor {
       return max;
     }
 
+    if (query.toLowerCase().contains("plus")) {
+      List<Integer> numbers = Arrays.stream(query.split("\\D+")) // split by non-digits
+              .filter(s -> !s.isEmpty())
+              .map(Integer::parseInt)
+              .collect(Collectors.toList());
+
+      int total = numbers.stream().mapToInt(Integer::intValue).sum();
+
+      return String.valueOf(total);
+    }
+
     return "";
   }
 }
