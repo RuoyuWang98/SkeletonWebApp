@@ -16,6 +16,10 @@ public class QueryProcessor {
       return "Football is a game";
     }
 
+    if (query.toLowerCase().contains("name")) {
+      return "football-66";
+    }
+
     return "";
   }
 }
