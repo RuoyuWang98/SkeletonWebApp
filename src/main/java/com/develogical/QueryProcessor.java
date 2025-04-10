@@ -57,6 +57,24 @@ public class QueryProcessor {
       return String.valueOf(product);
     }
 
+    if (query.toLowerCase().contains("cube")) {
+      List<Integer> numbers = Arrays.stream(query.split("\\D+"))
+              .filter(s -> !s.isEmpty())
+              .map(Integer::parseInt)
+              .collect(Collectors.toList());
+
+      for (int num : numbers) {
+        double squareRoot = Math.sqrt(num);
+        double cubeRoot = Math.cbrt(num);
+
+        // Check if both the square root and cube root are integers
+        if ((squareRoot == (int) squareRoot) && (cubeRoot == (int) cubeRoot)) {
+          return String.valueOf(num);
+        }
+
+      }
+    }
+
     return "";
   }
 }

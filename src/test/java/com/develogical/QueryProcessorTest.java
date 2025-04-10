@@ -50,4 +50,9 @@ public class QueryProcessorTest {
     assertThat(queryProcessor.process("What is 7 multiplied by 21?"), containsString("147"));
   }
 
+  @Test
+  public void knowsAboutSquareAndCube() {
+    assertThat(queryProcessor.process("Which of the following numbers is both a square and a cube: 627, 729, 3912, 3875, 4, 2197, 3851?"), containsString("729"));
+  }
+
 }
