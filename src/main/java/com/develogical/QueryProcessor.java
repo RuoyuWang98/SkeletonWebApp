@@ -1,5 +1,10 @@
 package com.develogical;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 public class QueryProcessor {
 
   public String process(String query) {
@@ -20,12 +25,15 @@ public class QueryProcessor {
       return "football-66";
     }
 
-    if (query.toLowerCase().contains("largest: 69, 25, 97?")) {
-      return "97";
-    }
+    if (query.toLowerCase().contains("largest")) {
+      List<Integer> numbers = Arrays.stream(query.split("\\D+")) // split by non-digits
+              .filter(s -> !s.isEmpty())
+              .map(Integer::parseInt)
+              .collect(Collectors.toList());
 
-    if (query.toLowerCase().contains("largest: 28, 51, 62?")) {
-      return "62";
+      String max = Collections.max(numbers).toString();
+
+      return max;
     }
 
     return "";
