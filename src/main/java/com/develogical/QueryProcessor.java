@@ -37,7 +37,7 @@ public class QueryProcessor {
     }
 
     if (query.toLowerCase().contains("plus")) {
-      List<Integer> numbers = Arrays.stream(query.split("\\D+")) // split by non-digits
+      List<Integer> numbers = Arrays.stream(query.split("\\D+"))
               .filter(s -> !s.isEmpty())
               .map(Integer::parseInt)
               .collect(Collectors.toList());
@@ -45,6 +45,16 @@ public class QueryProcessor {
       int total = numbers.stream().mapToInt(Integer::intValue).sum();
 
       return String.valueOf(total);
+    }
+
+    if (query.toLowerCase().contains("multiplied")) {
+      List<Integer> numbers = Arrays.stream(query.split("\\D+"))
+              .filter(s -> !s.isEmpty())
+              .map(Integer::parseInt)
+              .collect(Collectors.toList());
+
+      int product = numbers.stream().reduce(1, (a, b) -> a * b);
+      return String.valueOf(product);
     }
 
     return "";
