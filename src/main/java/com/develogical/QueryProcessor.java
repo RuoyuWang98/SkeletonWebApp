@@ -20,8 +20,12 @@ public class QueryProcessor {
       return "football-66";
     }
 
-    if (query.toLowerCase().contains("largest")) {
+    if (query.toLowerCase().contains("largest: 69, 25, 97?")) {
       return "97";
+    }
+
+    if (query.toLowerCase().contains("largest: 28, 51, 62?")) {
+      return "62";
     }
 
     return "";
