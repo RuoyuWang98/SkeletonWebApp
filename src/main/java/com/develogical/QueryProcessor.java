@@ -13,8 +13,8 @@ public class QueryProcessor {
 
     if (query.toLowerCase().contains("shakespeare")) {
       return "William Shakespeare (26 April 1564 - 23 April 1616) was an "
-          + "English poet, playwright, and actor, widely regarded as the greatest "
-          + "writer in the English language and the world's pre-eminent dramatist.";
+              + "English poet, playwright, and actor, widely regarded as the greatest "
+              + "writer in the English language and the world's pre-eminent dramatist.";
     }
 
     if (query.toLowerCase().contains("football")) {
@@ -73,6 +73,26 @@ public class QueryProcessor {
         }
 
       }
+
+
+    }
+
+    if (query.toLowerCase().contains("minus")) {
+      List<Integer> numbers = Arrays.stream(query.split("\\D+"))
+              .filter(s -> !s.isEmpty())
+              .map(Integer::parseInt)
+              .collect(Collectors.toList());
+
+      //int total = numbers.stream().mapToInt(Integer::intValue).sum();
+
+      int total = numbers.get(0);
+
+      // Subtract all the subsequent numbers
+      for (int i = 1; i < numbers.size(); i++) {
+        total -= numbers.get(i);
+      }
+
+      return String.valueOf(total);
     }
 
     return "";
