@@ -13,7 +13,7 @@ public class QueryProcessor {
     }
 
     if (query.toLowerCase().contains("football")) {
-      return "Football is a sport";
+      return "Football is a game";
     }
 
     return "";
