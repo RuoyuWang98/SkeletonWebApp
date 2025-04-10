@@ -95,6 +95,30 @@ public class QueryProcessor {
       return String.valueOf(total);
     }
 
+    if (query.toLowerCase().contains("primes")) {
+      List<Integer> numbers = Arrays.stream(query.split("\\D+"))
+              .filter(s -> !s.isEmpty())
+              .map(Integer::parseInt)
+              .collect(Collectors.toList());
+
+      StringBuilder primes = new StringBuilder();
+      for (int num : numbers) {
+        if (isPrime(num)) {
+          primes.append(num).append(", ");
+        }
+      }
+
+      return primes.length() > 0 ? primes.toString().trim() : "No prime numbers found.";
+    }
+
     return "";
+  }
+
+  public static boolean isPrime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i <= num / 2; i++) {
+      if (num % i == 0) return false;
+    }
+    return true;
   }
 }
